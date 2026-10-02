@@ -283,11 +283,6 @@ export default function MatchWidget() {
             <footer className="page-footer mx-auto flex w-full max-w-6xl items-center justify-between px-5 py-5 sm:px-8">
                 <span>UNITED, ALWAYS.</span>
                 <span>GLORY, GLORY, MAN UNITED</span>
-                <span className="photo-credit">
-                    Photo: <a href="https://commons.wikimedia.org/wiki/File:Stretford_End_2019.jpg" target="_blank" rel="noreferrer">Luis.ortizgt07 / Wikimedia Commons</a>
-                    {' · '}
-                    <a href="https://creativecommons.org/licenses/by-sa/4.0/" target="_blank" rel="noreferrer">CC BY-SA 4.0</a>
-                </span>
             </footer>
         </main>
     )
