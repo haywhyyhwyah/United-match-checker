@@ -1,0 +1,720 @@
+@import "tailwindcss";
+@source "./";
+
+:root {
+	font-family: 'Barlow Condensed', 'Arial Narrow', sans-serif;
+	color: #f5f2ed;
+	background: #101010;
+	font-synthesis: none;
+	text-rendering: optimizeLegibility;
+	-webkit-font-smoothing: antialiased;
+	-moz-osx-font-smoothing: grayscale;
+	font-optical-sizing: auto;
+	font-weight: 400;
+}
+
+* {
+	box-sizing: border-box;
+}
+
+body {
+	margin: 0;
+	min-width: 320px;
+	min-height: 100vh;
+}
+
+button,
+a {
+	font: inherit;
+}
+
+button {
+	cursor: pointer;
+}
+
+.match-page {
+	--united-red: #da020e;
+	--paper: #f5f2ed;
+	overflow: hidden;
+	background: #101010;
+	background-image: linear-gradient(105deg, rgb(5 9 17 / 48%) 0%, rgb(7 12 22 / 35%) 58%, rgb(7 12 22 / 28%) 100%), linear-gradient(0deg, rgb(3 7 15 / 48%), rgb(6 15 29 / 10%)), linear-gradient(180deg, rgb(25 52 86 / 18%), transparent 48%), url('/1_Manchester-United-v-Istanbul-Basaksehir-Group-H-UEFA-Champions-League.avif');
+	background-position: center, center, center, center 44%;
+	background-size: cover;
+	background-repeat: no-repeat;
+	min-height: 100vh;
+}
+
+.match-page[data-theme='light'] {
+	background-image: linear-gradient(105deg, rgb(10 8 8 / 58%) 0%, rgb(10 8 8 / 34%) 58%, rgb(10 8 8 / 24%) 100%), linear-gradient(0deg, rgb(8 8 8 / 34%), rgb(8 8 8 / 4%)), url('/old-trafford.jpg');
+	background-position: center, center, center 44%;
+}
+
+.header-tools {
+	display: flex;
+	align-items: center;
+	gap: 14px;
+}
+
+.theme-switch {
+	display: flex;
+	padding: 3px;
+	border: 1px solid #ffffff45;
+	background: #100d0d9c;
+}
+
+.theme-switch button {
+	min-width: 42px;
+	padding: 5px 9px;
+	border: 0;
+	background: transparent;
+	color: #d4cfca;
+	font: 700 10px 'Barlow', Arial, sans-serif;
+	transition: background-color 160ms ease, color 160ms ease;
+}
+
+.theme-switch button[aria-pressed='true'] {
+	background: var(--united-red);
+	color: #fff;
+}
+
+.theme-switch button:focus-visible {
+	outline: 2px solid #fff;
+	outline-offset: 2px;
+}
+
+.site-header {
+	border-bottom: 1px solid #ffffff20;
+}
+
+.brand-lockup {
+	color: inherit;
+	text-decoration: none;
+}
+
+.brand-mark {
+	display: block;
+	width: 38px;
+	height: 38px;
+	object-fit: contain;
+}
+
+.brand-name {
+	font-size: 11px;
+	font-weight: 800;
+	line-height: .95;
+	letter-spacing: 1px;
+}
+
+.header-season,
+.section-kicker,
+.eyebrow,
+.countdown-heading,
+.time-label,
+.venue-tag,
+.page-footer {
+	font-family: 'Barlow', Arial, sans-serif;
+	font-size: 10px;
+	font-weight: 700;
+	letter-spacing: 1.6px;
+}
+
+.header-season {
+	color: #aaa6a2;
+}
+
+.section-kicker {
+	display: flex;
+	align-items: center;
+	gap: 10px;
+	color: #ded9d2;
+}
+
+.section-kicker>span {
+	width: 7px;
+	height: 7px;
+	border-radius: 50%;
+	background: var(--united-red);
+	box-shadow: 0 0 13px #da020e;
+}
+
+.match-layout {
+	display: grid;
+	grid-template-columns: minmax(0, .9fr) minmax(360px, 1.1fr);
+	align-items: center;
+	gap: 4vw;
+}
+
+.eyebrow {
+	color: #b8b1a9;
+	margin: 0 0 14px;
+}
+
+h1 {
+	margin: 0;
+	font-size: clamp(64px, 8.5vw, 116px);
+	line-height: .78;
+	letter-spacing: 0;
+	font-weight: 800;
+	text-transform: uppercase;
+}
+
+h1 em {
+	color: var(--united-red);
+	font-style: normal;
+}
+
+.player-carousel {
+	position: relative;
+	height: clamp(330px, 35vw, 430px);
+	overflow: hidden;
+	border: 1px solid #ffffff25;
+	background: #241416;
+	isolation: isolate;
+}
+
+.player-carousel::after {
+	content: '';
+	position: absolute;
+	z-index: 1;
+	inset: 0;
+	pointer-events: none;
+	background: linear-gradient(0deg, #100d0de8 0%, #100d0d88 24%, transparent 70%), linear-gradient(90deg, #100d0d50, transparent 72%);
+}
+
+.player-carousel-image {
+	position: absolute;
+	inset: 0;
+	width: 100%;
+	height: 100%;
+	object-fit: cover;
+	object-position: center 18%;
+	animation: player-reveal 480ms ease-out both;
+}
+
+.player-number {
+	position: absolute;
+	z-index: 2;
+	top: 13px;
+	left: 20px;
+	color: #ffffffa8;
+	font-size: clamp(64px, 8vw, 98px);
+	font-weight: 800;
+	line-height: .9;
+	text-shadow: 0 3px 18px #0008;
+}
+
+.player-detail {
+	position: absolute;
+	z-index: 2;
+	left: 22px;
+	bottom: 24px;
+	max-width: calc(100% - 112px);
+}
+
+.player-position {
+	color: #f4c6c8;
+	font: 700 9px 'Barlow', Arial, sans-serif;
+	letter-spacing: 1.4px;
+}
+
+.player-name {
+	margin-top: 6px;
+	color: #fff;
+	font-family: 'Barlow Condensed', 'Arial Narrow', sans-serif;
+	font-size: clamp(30px, 3.6vw, 44px);
+	font-weight: 800;
+	line-height: .95;
+	text-transform: uppercase;
+	text-shadow: 0 2px 12px #0009;
+}
+
+.player-controls {
+	position: absolute;
+	z-index: 3;
+	top: 16px;
+	right: 16px;
+	display: flex;
+	gap: 7px;
+}
+
+.carousel-arrow {
+	display: grid;
+	place-items: center;
+	width: 36px;
+	height: 36px;
+	border: 1px solid #ffffff6b;
+	background: #100d0d75;
+	color: white;
+	font: 28px/1 'Barlow Condensed', sans-serif;
+	transition: background-color 160ms ease, border-color 160ms ease;
+}
+
+.carousel-arrow:hover,
+.carousel-arrow:focus-visible {
+	border-color: #fff;
+	background: var(--united-red);
+}
+
+.player-indicators {
+	position: absolute;
+	z-index: 3;
+	right: 19px;
+	bottom: 28px;
+	display: flex;
+	align-items: center;
+	gap: 7px;
+}
+
+.player-indicator {
+	width: 7px;
+	height: 7px;
+	padding: 0;
+	border: 0;
+	border-radius: 50%;
+	background: #ffffff80;
+	transition: width 180ms ease, background-color 180ms ease;
+}
+
+.player-indicator.is-active {
+	width: 20px;
+	border-radius: 5px;
+	background: var(--united-red);
+}
+
+.fixture-meta {
+	margin-top: 31px;
+	color: #bbb5b0;
+	font-family: 'Barlow', Arial, sans-serif;
+	font-size: 13px;
+}
+
+.fixture-meta p {
+	margin: 8px 0 0;
+}
+
+.competition-line {
+	display: flex;
+	align-items: center;
+	gap: 8px;
+	color: #fff;
+	font-weight: 700;
+}
+
+.competition-line img {
+	width: 19px;
+	height: 19px;
+	object-fit: contain;
+}
+
+.match-visual {
+	min-height: 330px;
+	position: relative;
+	display: flex;
+	flex-direction: column;
+	align-items: center;
+	justify-content: center;
+	border: 1px solid #ffffff20;
+	background: linear-gradient(140deg, #ffffff09, transparent 52%), repeating-linear-gradient(135deg, transparent 0 22px, #ffffff05 23px 24px);
+	isolation: isolate;
+}
+
+.match-visual::before {
+	content: '';
+	position: absolute;
+	z-index: -1;
+	width: min(34vw, 390px);
+	aspect-ratio: 1;
+	border-radius: 50%;
+	background: #da020e20;
+	filter: blur(32px);
+}
+
+.visual-orbit {
+	position: absolute;
+	width: 240px;
+	aspect-ratio: 1;
+	border: 1px solid #ffffff16;
+	border-radius: 50%;
+}
+
+.orbit-two {
+	width: 330px;
+}
+
+.visual-cross {
+	position: absolute;
+	top: 22px;
+	right: 25px;
+	color: var(--united-red);
+	font-size: 24px;
+}
+
+.fixture-teams {
+	display: flex;
+	align-items: center;
+	gap: clamp(15px, 3vw, 36px);
+}
+
+.team-crest {
+	width: clamp(72px, 11vw, 122px);
+	height: clamp(72px, 11vw, 122px);
+	object-fit: contain;
+	display: grid;
+	place-items: center;
+}
+
+.united-crest {
+	filter: drop-shadow(0 9px 18px #0008);
+}
+
+.opponent-crest {
+	filter: drop-shadow(0 9px 18px #0008);
+}
+
+.opponent-placeholder {
+	border: 1px solid #ffffff60;
+	border-radius: 50%;
+	background: #222;
+	color: #f5f2ed;
+	font-size: 38px;
+	font-weight: 800;
+}
+
+.versus {
+	color: #c9c1b9;
+	font: 700 11px 'Barlow', Arial, sans-serif;
+}
+
+.opponent-name {
+	margin-top: 18px;
+	max-width: calc(100% - 32px);
+	overflow-wrap: anywhere;
+	text-align: center;
+	font-size: clamp(23px, 3vw, 34px);
+	line-height: 1;
+	font-weight: 800;
+	text-transform: uppercase;
+}
+
+.venue-tag {
+	margin-top: 8px;
+	color: #c4bdb6;
+	font-size: 9px;
+}
+
+.visual-caption {
+	position: absolute;
+	bottom: 18px;
+	left: 20px;
+	color: #ffffff70;
+	font: 700 8px/1.4 'Barlow', Arial, sans-serif;
+	letter-spacing: 1.2px;
+}
+
+.countdown-block {
+	margin-top: 56px;
+	border-top: 1px solid #ffffff29;
+}
+
+.countdown-heading {
+	display: flex;
+	justify-content: space-between;
+	gap: 16px;
+	padding: 17px 0 12px;
+	color: #e3ded7;
+}
+
+.countdown-date {
+	color: #aaa39c;
+	text-align: right;
+	font-weight: 500;
+	letter-spacing: .5px;
+}
+
+.countdown-grid {
+	display: grid;
+	grid-template-columns: repeat(4, 1fr);
+	border: 1px solid #ffffff20;
+	background: #151515;
+}
+
+.time-unit {
+	min-height: 104px;
+	padding: 11px 15px 13px;
+	display: flex;
+	flex-direction: column;
+	justify-content: center;
+	border-right: 1px solid #ffffff20;
+}
+
+.time-unit:last-child {
+	border-right: 0;
+}
+
+.time-value {
+	font-size: clamp(46px, 7vw, 74px);
+	font-variant-numeric: tabular-nums;
+	font-weight: 700;
+	line-height: .95;
+	color: var(--paper);
+	animation: tick-in 220ms ease-out;
+}
+
+.time-label {
+	margin-top: 10px;
+	color: #aaa39c;
+	text-transform: uppercase;
+}
+
+.page-footer {
+	color: #77716d;
+	border-top: 1px solid #ffffff18;
+}
+
+.photo-credit {
+	color: #b3aaa2;
+	font-size: 8px;
+	font-weight: 500;
+	letter-spacing: .3px;
+	text-align: right;
+}
+
+.photo-credit a {
+	color: inherit;
+	text-decoration-color: #ffffff70;
+	text-underline-offset: 2px;
+}
+
+.match-skeleton {
+	display: grid;
+	gap: 11px;
+	margin-top: 28px;
+	max-width: 300px;
+}
+
+.skeleton-line {
+	display: block;
+	height: 13px;
+	background: linear-gradient(90deg, #ffffff0d, #ffffff20, #ffffff0d);
+	background-size: 200% 100%;
+	animation: shimmer 1.5s infinite;
+}
+
+.skeleton-short {
+	width: 100px;
+}
+
+.skeleton-title {
+	width: 205px;
+	height: 26px;
+}
+
+.skeleton-wide {
+	width: 265px;
+}
+
+.skeleton-countdown {
+	width: 100%;
+	height: 54px;
+	margin-top: 13px;
+}
+
+.error-banner {
+	display: grid;
+	gap: 8px;
+	max-width: 360px;
+	margin-top: 25px;
+	padding: 15px;
+	border-left: 3px solid var(--united-red);
+	background: #da020e18;
+	color: #ded9d2;
+	font: 13px 'Barlow', Arial, sans-serif;
+}
+
+.error-banner strong {
+	color: #fff;
+}
+
+.error-banner button {
+	width: fit-content;
+	padding: 6px 0;
+	border: 0;
+	background: none;
+	color: #fff;
+	text-decoration: underline;
+}
+
+@keyframes shimmer {
+	to {
+		background-position: -200% 0;
+	}
+}
+
+@keyframes tick-in {
+	from {
+		opacity: .5;
+		transform: translateY(3px);
+	}
+
+	to {
+		opacity: 1;
+		transform: translateY(0);
+	}
+}
+
+@keyframes player-reveal {
+	from {
+		opacity: .5;
+		transform: scale(1.025);
+	}
+
+	to {
+		opacity: 1;
+		transform: scale(1);
+	}
+}
+
+@media (max-width: 700px) {
+	.match-page {
+		background-position: center, center, 57% center;
+	}
+
+	.match-page[data-theme='dark'] {
+		background-position: center, center, center, 57% center;
+	}
+
+	.match-page[data-theme='light'] {
+		background-position: center, center, 57% center;
+	}
+
+	.header-tools {
+		flex-direction: column;
+		align-items: flex-end;
+		gap: 5px;
+	}
+
+	.header-season {
+		font-size: 8px;
+		letter-spacing: 1px;
+	}
+
+	.match-shell {
+		padding-top: 36px;
+	}
+
+	.match-layout {
+		grid-template-columns: 1fr;
+		gap: 28px;
+	}
+
+	h1 {
+		font-size: clamp(61px, 16vw, 92px);
+	}
+
+	.player-carousel {
+		height: min(88vw, 340px);
+	}
+
+	.player-detail {
+		left: 16px;
+		bottom: 21px;
+		max-width: calc(100% - 100px);
+	}
+
+	.player-name {
+		font-size: clamp(27px, 8vw, 36px);
+	}
+
+	.player-number {
+		left: 15px;
+		font-size: 68px;
+	}
+
+	.player-controls {
+		top: 12px;
+		right: 12px;
+	}
+
+	.player-indicators {
+		right: 14px;
+		bottom: 25px;
+		gap: 5px;
+	}
+
+	.player-indicator {
+		width: 6px;
+		height: 6px;
+	}
+
+	.player-indicator.is-active {
+		width: 15px;
+	}
+
+	.fixture-meta {
+		margin-top: 22px;
+	}
+
+	.match-visual {
+		min-height: 275px;
+	}
+
+	.visual-orbit {
+		width: 205px;
+	}
+
+	.orbit-two {
+		width: 285px;
+	}
+
+	.countdown-block {
+		margin-top: 34px;
+	}
+
+	.time-unit {
+		min-height: 88px;
+		padding: 9px 8px;
+	}
+
+	.time-value {
+		font-size: clamp(37px, 11vw, 59px);
+	}
+
+	.time-label {
+		font-size: 8px;
+		letter-spacing: 1px;
+	}
+
+	.page-footer {
+		font-size: 8px;
+		letter-spacing: 1px;
+	}
+
+	.photo-credit {
+		width: 100%;
+		text-align: left;
+	}
+}
+
+@media (prefers-reduced-motion: reduce) {
+
+	.player-carousel-image,
+	.player-indicator,
+	.carousel-arrow {
+		animation: none;
+		transition: none;
+	}
+}
+
+@media (max-width: 390px) {
+	.countdown-date {
+		max-width: 55%;
+	}
+
+	.countdown-heading {
+		font-size: 8px;
+	}
+
+	.time-unit {
+		padding-inline: 5px;
+	}
+}
