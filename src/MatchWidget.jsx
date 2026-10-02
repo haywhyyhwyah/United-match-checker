@@ -219,27 +219,6 @@ export default function MatchWidget() {
             <section className="match-shell mx-auto w-full max-w-6xl px-5 pb-12 pt-8 sm:px-8 sm:pt-16" id="top">
                 <div className="section-kicker"><span /> THE NEXT FIXTURE</div>
                 <div className="match-layout mt-6">
-                    <div className="match-copy">
-                        <p className="eyebrow">THE ROAD TO KICK-OFF</p>
-                        <PlayerCarousel />
-                        {loading ? <MatchSkeleton /> : error ? (
-                            <div className="error-banner" role="alert">
-                                <strong>Fixture unavailable</strong>
-                                <span>{error}</span>
-                                <button type="button" onClick={() => window.location.reload()}>Try again</button>
-                            </div>
-                        ) : match && (
-                            <div className="fixture-meta">
-                                <div className="competition-line">
-                                    {match.competitionEmblem && <img src={match.competitionEmblem} alt="" />}
-                                    <span>{match.competition}</span>
-                                </div>
-                                <p>{formatKickoff(match.kickoff)}</p>
-                                <p>{match.isHome ? 'Old Trafford, Manchester' : match.venue}</p>
-                            </div>
-                        )}
-                    </div>
-
                     <div className="match-visual" aria-label="Next Manchester United match">
                         <div className="visual-orbit orbit-one" />
                         <div className="visual-orbit orbit-two" />
@@ -259,24 +238,47 @@ export default function MatchWidget() {
                         <div className="venue-tag">{match ? (match.isHome ? 'HOME · OLD TRAFFORD' : 'AWAY FIXTURE') : 'MANCHESTER UNITED'}</div>
                         <div className="visual-caption">MANCHESTER<br />IS RED</div>
                     </div>
-                </div>
 
-                {!loading && !error && match && countdown && (
-                    <div className="countdown-block" aria-label="Time until kick-off" aria-live="off">
-                        <div className="countdown-heading">
-                            <span>UNTIL KICK-OFF</span>
-                            <span className="countdown-date">{formatKickoff(match.kickoff)}</span>
+                    {!loading && !error && match && (
+                        <div className="fixture-meta">
+                            <div className="competition-line">
+                                {match.competitionEmblem && <img src={match.competitionEmblem} alt="" />}
+                                <span>{match.competition}</span>
+                            </div>
+                            <p>{formatKickoff(match.kickoff)}</p>
+                            <p>{match.isHome ? 'Old Trafford, Manchester' : match.venue}</p>
                         </div>
-                        <div className="countdown-grid">
-                            {TIME_UNITS.map(({ key, label }) => (
-                                <div className="time-unit" key={key}>
-                                    <span className="time-value" key={countdown[key]}>{String(countdown[key]).padStart(2, '0')}</span>
-                                    <span className="time-label">{label}</span>
-                                </div>
-                            ))}
+                    )}
+
+                    {!loading && !error && match && countdown && (
+                        <div className="countdown-block" aria-label="Time until kick-off" aria-live="off">
+                            <div className="countdown-heading">
+                                <span>UNTIL KICK-OFF</span>
+                                <span className="countdown-date">{formatKickoff(match.kickoff)}</span>
+                            </div>
+                            <div className="countdown-grid">
+                                {TIME_UNITS.map(({ key, label }) => (
+                                    <div className="time-unit" key={key}>
+                                        <span className="time-value" key={countdown[key]}>{String(countdown[key]).padStart(2, '0')}</span>
+                                        <span className="time-label">{label}</span>
+                                    </div>
+                                ))}
+                            </div>
                         </div>
+                    )}
+
+                    <div className="match-copy">
+                        <p className="eyebrow">THE ROAD TO KICK-OFF</p>
+                        <PlayerCarousel />
+                        {loading ? <MatchSkeleton /> : error ? (
+                            <div className="error-banner" role="alert">
+                                <strong>Fixture unavailable</strong>
+                                <span>{error}</span>
+                                <button type="button" onClick={() => window.location.reload()}>Try again</button>
+                            </div>
+                        ) : null}
                     </div>
-                )}
+                </div>
             </section>
             <footer className="page-footer mx-auto flex w-full max-w-6xl items-center justify-between px-5 py-5 sm:px-8">
                 <span>UNITED, ALWAYS.</span>

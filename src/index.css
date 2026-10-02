@@ -142,6 +142,29 @@ button {
 	grid-template-columns: minmax(0, .9fr) minmax(360px, 1.1fr);
 	align-items: center;
 	gap: 4vw;
+	row-gap: 24px;
+}
+
+.match-visual {
+	grid-column: 2;
+	grid-row: 1;
+}
+
+.match-copy {
+	grid-column: 1;
+	grid-row: 1;
+}
+
+.fixture-meta {
+	grid-column: 1;
+	grid-row: 2;
+	margin-top: 0;
+}
+
+.countdown-block {
+	grid-column: 1 / -1;
+	grid-row: 3;
+	margin-top: 0;
 }
 
 .eyebrow {
@@ -607,6 +630,14 @@ h1 em {
 		gap: 28px;
 	}
 
+	.match-visual,
+	.match-copy,
+	.fixture-meta,
+	.countdown-block {
+		grid-column: 1;
+		grid-row: auto;
+	}
+
 	h1 {
 		font-size: clamp(61px, 16vw, 92px);
 	}
@@ -650,10 +681,6 @@ h1 em {
 		width: 15px;
 	}
 
-	.fixture-meta {
-		margin-top: 22px;
-	}
-
 	.match-visual {
 		min-height: 275px;
 	}
@@ -667,7 +694,7 @@ h1 em {
 	}
 
 	.countdown-block {
-		margin-top: 34px;
+		margin-top: 0;
 	}
 
 	.time-unit {
