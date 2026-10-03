@@ -11,7 +11,7 @@ const TIME_UNITS = [
 const PLAYERS = [
     {
         name: 'Bruno Fernandes',
-        number: '08',
+        number: '8',
         position: 'MIDFIELDER',
         image: 'https://dynamic-crop-cdn.scoreplay.io/472/4896330/media_102559977_102167101.jpg?fmt=webp&f=center&w=1024&h=1396',
     },
@@ -41,7 +41,7 @@ const PLAYERS = [
     },
     {
         name: 'Senne Lammens',
-        number: '01',
+        number: '1',
         position: 'GOALKEEPER',
         image: 'https://dynamic-crop-cdn.scoreplay.io/472/4896327/media_102559948_102167072.jpg?fmt=webp&f=center&w=1024&h=1396',
     },
@@ -53,7 +53,7 @@ const PLAYERS = [
     },
     {
         name: 'Marcus Rashford',
-        number: '09',
+        number: '9',
         position: 'FORWARD',
         image: 'https://dynamic-crop-cdn.scoreplay.io/472/6061204/media_123351904_122966197_compressed.jpg?fmt=webp&f=center&w=720&h=1080',
     },
